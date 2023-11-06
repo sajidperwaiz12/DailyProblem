@@ -1,0 +1,27 @@
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        // Method 1 - first we will sort the array and then check if next element is equal to the current
+        // if it is equal at any point then return true, otherwise if we travel entire array return false
+
+        // Arrays.sort(nums);
+
+        // for (int i = 0; i < nums.length - 1; i++) {
+        //     if (nums[i] == nums[i + 1]) return true;
+        // }
+
+        // return false;
+
+
+        // Method 2 - In this approach we will use HashSet, if number is already there in hashset then we will return true
+        // otherwise if we travel entire array then return false
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (set.contains(nums[i])) return true;
+            set.add(nums[i]);
+        }
+
+        return false;
+    }
+}
