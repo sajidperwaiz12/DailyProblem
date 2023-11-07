@@ -1,0 +1,47 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        // Method 1 - Iterative 
+        // In this method we will take a prev node and intially point it to null
+        // we will travel the entire linkedlist until its not null
+        // create a next node and store the reference of next node 
+        // then point the current node to previous and update both prev and curr
+
+        // ListNode prev = null;
+
+        // while (head != null) {
+        //     ListNode next = head.next;
+        //     head.next = prev;
+        //     prev = head;
+        //     head = next;
+        // }
+
+        // return prev;
+
+        // Method 2 - Recursive
+        // In this method we will assume that the linkedlist after head is already reversed 
+        // we only have to reverse current head
+        // the base case will be if likedlist is null or it has only one node, then we just have to return head
+        // we will get the reversed list using recursion and get the new head
+        // then we will point head next's next to current head and head to null
+
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode newHead = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
+}
