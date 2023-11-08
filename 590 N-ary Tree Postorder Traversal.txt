@@ -1,0 +1,46 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+    public List<Integer> postorder(Node root) {
+        // In this question we have to do preorder traversal that means first all children will be 
+        // stored and then root
+        // we will take a helper function that will contains two things root and list
+        // if root is null return empty list
+
+        List<Integer> ans = new ArrayList<>();
+
+        if (root == null) return ans;
+
+        helper(root, ans);
+        return ans;
+    }
+
+    public static void helper(Node root, List<Integer> ans) {
+        if (root == null) {
+            return ;
+        }
+
+        for (int i = 0; i < root.children.size(); i++) {
+            helper(root.children.get(i), ans);
+        }
+
+        ans.add(root.val);
+    }
+}
